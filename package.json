@@ -1,0 +1,18 @@
+{
+  "name": "mia-videos",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "gitHead": "81a0b99cffc445710f7761d9943fa6363d77162a",
+  "dependencies": {
+    "jade": "~1.3.0",
+    "browserify": "~3.32.1",
+    "jadeify": "~2.1.1"
+  }
+}
