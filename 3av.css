@@ -1,0 +1,50 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+  background-color: #414141;
+  font-family: "avenir", sans-serif;
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  font-weight: 100;
+  clear: both;
+}
+
+#videos figure, #videos img  {
+  max-width: 100%;
+  margin: 0;
+}
+
+#featured {
+  width: 100%;
+  overflow: hidden;
+}
+#featured figure {
+  width: 33%;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+.videolist {
+  margin: 0 0.25em;
+  clear: both;
+}
+.videolist figure {
+  width: 48%;
+  float: left;
+  padding: 1%;
+}
+
+figcaption {
+  display: none;
+}
+
+@media screen and (min-width: 30em) {
+  .videolist figure {
+    width: 24%;
+  }
+}
