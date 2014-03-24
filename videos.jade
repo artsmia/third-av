@@ -1,6 +1,0 @@
-each video, index in videos
-  figure(class="v#{index}")
-    // iframe(src="//player.vimeo.com/video/#{video.id}" webkitallowfullscreen mozallowfullscreen allowfullscreen)
-    img(src="#{video.thumbnail.replace('_1280', '_640')}")
-    figcaption
-      h3 #{video.title}

@@ -42,6 +42,17 @@ h1, h2, h3, h4, h5, h6, h7 {
 figcaption {
   display: none;
 }
+figure.active img {
+  display: none;
+}
+figure.active figcaption {
+  display: block;
+}
+
+figcaption iframe {
+  width: 640px;
+  height: 360px;
+}
 
 @media screen and (min-width: 30em) {
   .videolist figure {
