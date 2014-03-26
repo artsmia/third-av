@@ -11,7 +11,7 @@
 
 <section id="swiper" class="swiper-container" swiper>
   <div class="swiper-wrapper">
-    <figure ng-repeat="video in videos" ng-class="{active: video.active}" class="swiper-slide">
+    <figure ng-repeat="video in videos" ng-class="{active: video.active, loaded: video.loaded}" class="swiper-slide">
       <img ng-src="{{video.thumbnail.replace('_1280', '_640')}}">
       <mia-video ng-if="video.active" video-id="{{video.id}}"></mia-video>
       <figcaption>

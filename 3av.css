@@ -35,10 +35,10 @@ h1, h2, h3, h4, h5, h6, h7 {
 
 figure.active {
 }
-figure.active img {
+figure.active.loaded img {
   display: none;
 }
-figure.active iframe {
+figure.active.loaded iframe {
   display: block;
 }
 

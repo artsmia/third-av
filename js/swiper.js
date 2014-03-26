@@ -16,6 +16,7 @@ app.directive('swiper', function($timeout) {
       var replaceWithVimeo = function(swiper, direction) {
         var scope = angular.element(swiper.activeSlide()).scope()
         scope.video.active = true
+        scope.$$nextSibling.video.active = true
         scope.$apply()
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)

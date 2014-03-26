@@ -20,6 +20,11 @@ app.directive('miaVideo', function($sce, $window) {
       }
       $window.addEventListener('resize', _apply)
       $window.addEventListener('onorientationchange', _apply)
+
+      element[0].addEventListener('load', function(e) {
+        $scope.$parent.video.loaded = true
+        $scope.$parent.$apply()
+      })
     }
   }
 })
