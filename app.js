@@ -14,10 +14,6 @@ app.config(function($sceDelegateProvider) {
 app.controller('mainCtrl', ['$scope', '$sce',
   function($scope, $sce) {
     $scope.videos = videos
-
-    $scope.replaceWithVimeo = function() {
-      this.video.active = true
-    }
   }
 ])
 

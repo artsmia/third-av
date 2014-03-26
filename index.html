@@ -11,10 +11,9 @@
 
 <section id="swiper" class="swiper-container" swiper>
   <div class="swiper-wrapper">
-    <!-- <img ng-repeat="video in videos" ng-src="{{video.thumbnail.replace('_1280', '_640')}}" class="swiper-slide"> -->
-    <figure ng-repeat="video in videos" ng-click="replaceWithVimeo()" ng-class="{active: video.active}" class="swiper-slide">
+    <figure ng-repeat="video in videos" ng-class="{active: video.active}" class="swiper-slide">
       <img ng-src="{{video.thumbnail.replace('_1280', '_640')}}">
-      <mia-video video-id="{{video.id}}"></mia-video>
+      <mia-video ng-if="video.active" video-id="{{video.id}}"></mia-video>
       <figcaption>
         <h3 ng-bind="video.title"></h3>
         <p ng-bind="video.description"></p>
