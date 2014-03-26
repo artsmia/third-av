@@ -1,0 +1,7 @@
+{
+  "name": "third-ave",
+  "version": "0.0.0",
+  "dependencies": {
+    "swiper": "~2.5.5"
+  }
+}

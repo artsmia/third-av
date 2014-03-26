@@ -22,3 +22,4 @@ app.controller('mainCtrl', ['$scope', '$sce',
 ])
 
 require('./js/miaVideo')
+require('./js/swiper')

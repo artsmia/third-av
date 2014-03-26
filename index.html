@@ -5,14 +5,24 @@
 <title>Third Ave | MIA</title>
 
 <link rel="stylesheet" type="text/css" href="3av.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/swiper/2.5.0/idangerous.swiper.css">
 <script type="text/javascript" src="//use.typekit.net/jkg2ird.js"></script>
 <body id="videos" ng-controller="mainCtrl">
-<figure ng-repeat="video in videos" ng-click="replaceWithVimeo()" ng-class="{active: video.active}">
-    <img ng-src="{{video.thumbnail.replace('_1280', '_640')}}">
-    <figcaption>
+
+<section id="swiper" class="swiper-container" swiper>
+  <div class="swiper-wrapper">
+    <!-- <img ng-repeat="video in videos" ng-src="{{video.thumbnail.replace('_1280', '_640')}}" class="swiper-slide"> -->
+    <figure ng-repeat="video in videos" ng-click="replaceWithVimeo()" ng-class="{active: video.active}" class="swiper-slide">
+      <img ng-src="{{video.thumbnail.replace('_1280', '_640')}}">
       <mia-video video-id="{{video.id}}"></mia-video>
-    </figcaption>
-  </figure>
+      <figcaption>
+        <h3 ng-bind="video.title"></h3>
+        <p ng-bind="video.description"></p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 
   <script src="bundle.js"></script>
 </body>
