@@ -13,13 +13,12 @@ app.config(function($sceDelegateProvider) {
 
 app.controller('mainCtrl', ['$scope', '$sce',
   function($scope, $sce) {
-    $scope.videos = videos.map(function(v) {
-      v.embedUrl = $sce.trustAsResourceUrl("//player.vimeo.com/video/"+v.id)
-      return v
-    })
+    $scope.videos = videos
 
     $scope.replaceWithVimeo = function() {
       this.video.active = true
     }
   }
 ])
+
+require('./js/miaVideo')
