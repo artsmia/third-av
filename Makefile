@@ -5,13 +5,16 @@ youtube:
 
 .PHONY: vimeo
 vimeo:
-	cd vimeo
-	youtube-dl -citw --write-info-json --skip-download https://vimeo.com/artsmia
+	# youtube-dl -citw --write-info-json --skip-download https://vimeo.com/artsmia
+	curl http://vimeo.com/api/v2/artsmia/videos.json > vimeo/videos.json
+	curl http://vimeo.com/api/v2/artsmia/albums.json > vimeo/albums.json
+	mkdir -p vimeo/albums
+	for album in $$(jq -r 'map(.id) | .[]' < vimeo/albums.json); do \
+		curl http://vimeo.com/api/v2/album/$$album/videos.json > vimeo/albums/$$album.json; \
+	done
 
 merge:
-	for i in vimeo/*info.json; do \
-		jq -c --arg file "$$(echo "$$i" | sed 's/info.json/mp4/')" '.file = "$$$file"' < "$$i"; \
-	done | json -g | jq -c '.' > all.json
+	node js/vimeoJson.js > all.json
 
 watchify:
-	watchify index.js -t jadeify -t brfs -o bundle.js
+	watchify app.js -t debowerify -t brfs -o bundle.js

@@ -1,6 +1,5 @@
 var ng = require('angular')
-  , fs = require('fs')
-  , videos = JSON.parse(fs.readFileSync('all.json', 'utf8'))
+  , vimeoJson = require('./all')
 
 window.app = ng.module('third-ave', [])
 
@@ -13,9 +12,11 @@ app.config(function($sceDelegateProvider) {
 
 app.controller('mainCtrl', ['$scope', '$sce',
   function($scope, $sce) {
-    $scope.videos = videos
+    $scope.videos = vimeoJson.videos
+    $scope.albums = vimeoJson.albums
   }
 ])
 
 require('./js/miaVideo')
 require('./js/swiper')
+require('./js/ngUnsafe')
