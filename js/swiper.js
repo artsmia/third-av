@@ -9,6 +9,7 @@ app.directive('swiper', function($timeout) {
         updateOnImagesReady: true
         , centeredSlides: true
         , slidesPerView: 2
+        , keyboardControl: true
       })
       $timeout(function() { $scope.swiper.reInit() }, 0)
 
@@ -21,6 +22,12 @@ app.directive('swiper', function($timeout) {
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)
       $scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
+
+      $scope.swiper.addCallback('SlideChangeStart', function(swiper, direction) {
+        var swiped = swiper.activeIndex > 0
+        $scope.$parent.swiped = $scope.$parent.$parent.swiped = swiped
+        $scope.$apply()
+      })
 
       $scope.restart = function() {
         $scope.swiper.swipeTo(0, 300, true)

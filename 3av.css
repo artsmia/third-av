@@ -67,7 +67,23 @@ figure iframe {
     left: 1em;
     z-index: 15;
     max-width: 21%;
+    transition: 0.1s linear margin-top;
   }
+
+  body.swiped header {
+    margin-top: 28.2vw;
+  }
+  body.swiped header h1, body.swiped header h2 {
+    display: none;
+  }
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+header nav ul li.active {
+  font-weight: bold;
 }
 
 figure figcaption {

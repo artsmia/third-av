@@ -7,13 +7,14 @@
 <link rel="stylesheet" type="text/css" href="3av.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/swiper/2.5.0/idangerous.swiper.css">
 <script type="text/javascript" src="//use.typekit.net/jkg2ird.js"></script>
-<body id="videos" ng-controller="mainCtrl">
+<body id="videos" ng-controller="mainCtrl" ng-class="{swiped: swiped}">
 
 <header>
   <h1>Third AV</h1>
+  <h2>Sights and sounds from behind the frame and beyond the labels at the <abbr title="Minneapolis Institute of Arts">MIA</abbr></h2>
   <nav>
     <ul>
-      <li ng-repeat="album in albums" ng-bind="album.title" ng-click="activateAlbum(album)"></li>
+      <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
     </ul>
   </nav>
 </header>
@@ -30,7 +31,7 @@
         </figcaption>
       </figure>
       <div class="swiper-slide outro" ng-if="album.videos.length > 1">
-        <p>{{album.videos.length}} videos</p>
+        <p>We have {{album.videos.length}} videos in the album <em ng-bind="album.title"></em>.</p>
         <p ng-click="restart()">Back</p>
       </div>
     </div>
