@@ -1,5 +1,6 @@
 var ng = require('angular')
-  , vimeoJson = require('./all')
+  , fs = require('fs')
+  , vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
 
 window.app = ng.module('third-ave', [])
 
