@@ -42,10 +42,12 @@ figure.active.loaded iframe {
   display: block;
 }
 
-figure iframe {
-  width: 640px;
-  max-width: 100%;
+figure > iframe, figure > img {
+  width: 100%;
   border: none;
+}
+
+figure iframe {
   display: none;
 }
 
