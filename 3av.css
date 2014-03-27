@@ -78,8 +78,16 @@ figure.swiper-slide-active figcaption {
   opacity: 1;
 }
 .swiper-slide-active img, .swiper-slide-active iframe {
-  border-bottom: 2px solid red;
+  border-bottom: 3px solid;
 }
+
+/* fancy colors: purple red blue magenta green orange */
+.swiper-slide:nth-child(6n+1) img, .swiper-slide:nth-child(6n+1) iframe { border-color: purple !important; }
+.swiper-slide:nth-child(6n+2) img, .swiper-slide:nth-child(6n+2) iframe { border-color: red !important; }
+.swiper-slide:nth-child(6n+3) img, .swiper-slide:nth-child(6n+3) iframe { border-color: blue !important; }
+.swiper-slide:nth-child(6n+4) img, .swiper-slide:nth-child(6n+4) iframe { border-color: magenta !important; }
+.swiper-slide:nth-child(6n+5) img, .swiper-slide:nth-child(6n+5) iframe { border-color: green !important; }
+.swiper-slide:nth-child(6n+6) img, .swiper-slide:nth-child(6n+6) iframe { border-color: orange !important; }
 
 .swiper-slide.outro {
   padding: 0 2em;
