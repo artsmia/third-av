@@ -1,3 +1,5 @@
+default: vimeo merge
+
 .PHONY: youtube
 youtube:
 	cd youtube
@@ -5,7 +7,6 @@ youtube:
 
 .PHONY: vimeo
 vimeo:
-	# youtube-dl -citw --write-info-json --skip-download https://vimeo.com/artsmia
 	curl http://vimeo.com/api/v2/artsmia/videos.json > vimeo/videos.json
 	curl http://vimeo.com/api/v2/artsmia/albums.json > vimeo/albums.json
 	mkdir -p vimeo/albums
