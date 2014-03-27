@@ -21,6 +21,10 @@ app.directive('swiper', function($timeout) {
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)
       $scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
+
+      $scope.restart = function() {
+        $scope.swiper.swipeTo(0, 300, true)
+      }
     }
   }
 })

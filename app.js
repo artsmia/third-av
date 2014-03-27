@@ -12,8 +12,17 @@ app.config(function($sceDelegateProvider) {
 
 app.controller('mainCtrl', ['$scope', '$sce',
   function($scope, $sce) {
-    $scope.videos = vimeoJson.videos
+    $scope.videos = $scope.recent = vimeoJson.videos
     $scope.albums = vimeoJson.albums
+    $scope.albums.unshift({
+      title: "Recent Videos"
+      , videos: $scope.recent
+    })
+
+    $scope.activateAlbum = function(album) {
+      $scope.activeAlbum = album
+    }
+    $scope.activeAlbum = $scope.albums[0]
   }
 ])
 

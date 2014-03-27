@@ -56,8 +56,18 @@ figure iframe {
     width: 93vw;
     margin-left: -20vw;
   }
+
+  header {
+    display: none;
+  }
 }
 @media screen and (min-width: 30em) {
+  header {
+    position: absolute;
+    left: 1em;
+    z-index: 15;
+    max-width: 21%;
+  }
 }
 
 figure figcaption {
@@ -69,4 +79,8 @@ figure.swiper-slide-active figcaption {
 }
 .swiper-slide-active img, .swiper-slide-active iframe {
   border-bottom: 2px solid red;
+}
+
+.swiper-slide.outro {
+  padding: 0 2em;
 }
