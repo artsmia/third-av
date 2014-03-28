@@ -31,7 +31,9 @@ app.directive('swiper', function($timeout) {
       })
 
       $scope.restart = function() {
-        $scope.swiper.swipeTo(0, 300, true)
+        $timeout( function() {
+         $scope.swiper.swipeTo(0, 300, true)
+        });
       }
     }
   }

@@ -1,8 +1,9 @@
 var ng = require('angular')
   , fs = require('fs')
   , vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
+  , controls = document.getElementById('thirdav-controls').innerHTML;
 
-window.app = ng.module('third-ave', [])
+window.app = ng.module('third-av', [])
 
 app.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
@@ -25,3 +26,8 @@ app.controller('mainCtrl', ['$scope', '$sce',
 require('./js/miaVideo')
 require('./js/swiper')
 require('./js/ngUnsafe')
+
+// Bootstrap after page load
+document.body.setAttribute( 'ng-controller', 'mainCtrl' );
+document.getElementById('thirdav-menu').innerHTML = controls;
+ng.bootstrap( document.body, ['third-av'] );
