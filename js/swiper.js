@@ -10,6 +10,7 @@ app.directive('swiper', function($timeout) {
         , centeredSlides: true
         , slidesPerView: 2
         , keyboardControl: true
+        , roundLengths: true
       })
       $timeout(function() { $scope.swiper.reInit() }, 0)
 
