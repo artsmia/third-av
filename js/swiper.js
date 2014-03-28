@@ -24,13 +24,13 @@ app.directive('swiper', function($timeout, $rootScope) {
       $scope.swiper.addCallback('Init', replaceWithVimeo)
       //$scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
 
-      $scope.swiper.addCallback('SlideChangeStart', function(swiper, direction) {
+      var swipeCheck = function(swiper, direction) {
         var swiped = swiper.activeIndex > 0
-        console.log( swiper );
         $rootScope.swiped = $scope.swiped = swiped
-        console.log( $rootScope.swiped );
         $rootScope.$apply()
-      })
+      }
+      $scope.swiper.addCallback('SlideChangeStart', swipeCheck)
+      $scope.swiper.addCallback('TouchEnd', swipeCheck)
 
       $scope.restart = function() {
         $timeout( function() {
