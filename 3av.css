@@ -67,12 +67,14 @@ figure iframe {
     left: 0;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    -webkit-transform: translateX(-100%)
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%)
   }
 
   #drawer:target {
     transition: 0.3s ease-in-out -webkit-transform;
     -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
     z-index: 10;
     padding: 1em;
     min-height: 100%;
@@ -153,7 +155,9 @@ figure.swiper-slide-active figcaption {
 .swiper-slide:nth-child(6n+6) img, .swiper-slide:nth-child(6n+6) iframe { border-color: orange !important; }
 
 .outro img {
-  -webkit-filter: blur(3px);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -webkit-filter: blur(.3em);
 }
 
 .outro .back {
