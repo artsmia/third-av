@@ -1,7 +1,7 @@
 var Swiper = require('swiper')
 window.Swiper = Swiper
 
-app.directive('swiper', function($timeout) {
+app.directive('swiper', function($timeout, $rootScope) {
   return {
     restrict: 'A',
     link: function postLink($scope, element, attrs) {
@@ -22,12 +22,14 @@ app.directive('swiper', function($timeout) {
         scope.$apply()
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)
-      $scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
+      //$scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
 
       $scope.swiper.addCallback('SlideChangeStart', function(swiper, direction) {
         var swiped = swiper.activeIndex > 0
-        $scope.$parent.swiped = $scope.$parent.$parent.swiped = swiped
-        $scope.$apply()
+        console.log( swiper );
+        $rootScope.swiped = $scope.swiped = swiped
+        console.log( $rootScope.swiped );
+        $rootScope.$apply()
       })
 
       $scope.restart = function() {
