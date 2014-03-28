@@ -2,11 +2,12 @@
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
-body {
+#videos {
   background-color: #414141;
   font-family: "avenir", sans-serif;
   color: white;
   margin: 0;
+  position:relative;
 }
 
 h1, h2, h3, h4, h5, h6, h7 {
@@ -113,10 +114,10 @@ figure iframe {
     transition: 0.1s linear margin-top;
   }
 
-  body.swiped header {
+  #videos.swiped header {
     margin-top: 28.2vw;
   }
-  body.swiped header h1, body.swiped header h2 {
+  #videos.swiped header h1, body.swiped header h2 {
     display: none;
   }
 }

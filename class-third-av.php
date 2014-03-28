@@ -16,9 +16,12 @@ class ThirdAV {
 		wp_enqueue_style( 
 			'thirdav_css',
 			plugins_url( '3av.css', __FILE__ ),
-			array(),
-			null,
-			true
+			array(
+				'foundation_css',
+				'mia_frontend_css',
+				'artsmia-icons',
+			),
+			false
 		);
 
 		wp_enqueue_script(
