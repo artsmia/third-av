@@ -5,7 +5,7 @@ app.directive('miaVideo', function($sce, $window) {
     replace: true,
     scope: { videoId: '@' },
     link: function postLink($scope, element, attrs) {
-      $scope.embedUrl = $sce.trustAsResourceUrl("//player.vimeo.com/video/"+$scope.videoId)
+      $scope.embedUrl = $sce.trustAsResourceUrl("//player.vimeo.com/video/"+$scope.videoId+"?portrait=0&title=0&byline=0")
 
       $scope.getWidth = function() {
         return parseInt(element[0].clientWidth) * (9/16)
