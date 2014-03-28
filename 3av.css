@@ -140,6 +140,10 @@ figure.swiper-slide-active figcaption {
   border-bottom: 3px solid;
 }
 
+.swiper-wrapper {
+  min-height: 100vh; /* otherwise swiper chops off text */
+}
+
 /* fancy colors: purple red blue magenta green orange */
 .swiper-slide:nth-child(6n+1) img, .swiper-slide:nth-child(6n+1) iframe { border-color: purple !important; }
 .swiper-slide:nth-child(6n+2) img, .swiper-slide:nth-child(6n+2) iframe { border-color: red !important; }
