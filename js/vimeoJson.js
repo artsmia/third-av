@@ -3,6 +3,11 @@ var fs = require('fs')
   , albums = JSON.parse(fs.readFileSync('vimeo/albums.json', 'utf8'))
   , albumVideos = {}
 
+// vimeo orders albums by date created.
+// re-order to put featured first
+featured = albums.filter(function(a) { return a.id == 2800016 }).pop()
+albums.splice(albums.indexOf(featured), 1)
+albums.splice(0, 0, featured)
 
 // TODO: why doesn't this work in browserify?
 // Error: Referencealbum is not defined (…/js/vimeoJson.js)
