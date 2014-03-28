@@ -32,10 +32,17 @@
           <div ng-bind-html="video.description | unsafe"></div>
         </figcaption>
       </figure>
-      <div class="swiper-slide outro" ng-if="album.videos.length > 1">
-        <p>We have {{album.videos.length}} videos in the album <em ng-bind="album.title"></em>.</p>
-        <p ng-click="restart()">Back</p>
-      </div>
+      <figure class="swiper-slide outro">
+        <a class="back" ng-click="restart()">
+          <img ng-src="{{album.thumbnail_large}}">
+          <span>&larr; Back</span>
+        </a>
+        <figcaption>
+          <p>We have <ng-pluralize count="album.videos.length" when="{'1': '1 video', 'other': '{} videos'}"></ng-pluralize>
+          in the album <em ng-bind="album.title"></em>.</p>
+          <div ng-bind-html="album.description | unsafe"></div>
+        </figcaption>
+      </figure>
     </div>
   </section>
 </div>

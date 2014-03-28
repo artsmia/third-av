@@ -42,7 +42,7 @@ figure.active.loaded iframe {
   display: block;
 }
 
-figure > iframe, figure > img {
+figure > iframe, figure > img, figure > a > img {
   width: 100%;
   border: none;
 }
@@ -148,6 +148,17 @@ figure.swiper-slide-active figcaption {
 .swiper-slide:nth-child(6n+5) img, .swiper-slide:nth-child(6n+5) iframe { border-color: green !important; }
 .swiper-slide:nth-child(6n+6) img, .swiper-slide:nth-child(6n+6) iframe { border-color: orange !important; }
 
-.swiper-slide.outro {
-  padding: 0 2em;
+.outro img {
+  -webkit-filter: blur(3px);
+}
+
+.outro .back {
+  position: relative
+}
+
+.outro .back span {
+  position: absolute;
+  top: -200%;
+  margin-left: 3em;
+  min-width: 100px;
 }
