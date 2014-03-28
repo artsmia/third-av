@@ -5,8 +5,6 @@
 <div id="videos" ng-class="{swiped: swiped}">
 
   <header id="drawer">
-    <h1>Third AV</h1>
-    <h2>Sights and sounds from behind the frame and beyond the labels at the <abbr title="Minneapolis Institute of Arts">MIA</abbr></h2>
     <nav id="thirdav-controls">
       <ul>
         <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
@@ -16,7 +14,6 @@
   </header>
 
   <div id="albums" ng-repeat="album in albums" ng-if="activeAlbum == album">
-    <a id="hamburger" href="#drawer">☰</a>
     <section class="swiper-container" swiper>
       <div class="swiper-wrapper">
         <figure ng-repeat="video in album.videos" ng-class="{active: video.active, loaded: video.loaded}" class="swiper-slide">
