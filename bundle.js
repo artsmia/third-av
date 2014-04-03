@@ -2877,6 +2877,7 @@ app.directive('swiper', function($timeout, $rootScope) {
         , slidesPerView: 2
         , keyboardControl: true
         , roundLengths: true
+        , calculateHeight: true
       })
       $timeout(function() { $scope.swiper.reInit() }, 0)
 
@@ -2892,9 +2893,7 @@ app.directive('swiper', function($timeout, $rootScope) {
 
       $scope.swiper.addCallback('SlideChangeStart', function(swiper, direction) {
         var swiped = swiper.activeIndex > 0
-        console.log( swiper );
         $rootScope.swiped = $scope.swiped = swiped
-        console.log( $rootScope.swiped );
         $rootScope.$apply()
       })
 
