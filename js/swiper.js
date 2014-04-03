@@ -23,7 +23,7 @@ app.directive('swiper', function($timeout, $rootScope) {
         scope.$apply()
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)
-      //$scope.swiper.addCallback('SlideChangeStart', replaceWithVimeo)
+      $scope.swiper.addCallback('SlideChangeEnd', replaceWithVimeo)
 
       var swipeCheck = function(swiper, direction) {
         var swiped = swiper.activeIndex > 0
