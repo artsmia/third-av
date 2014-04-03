@@ -8,7 +8,6 @@
     <nav id="thirdav-controls">
       <ul>
         <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
-        <li id="no-hamburger" ><a href="#">Close</a></li>
       </ul>
     </nav>
   </header>

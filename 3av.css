@@ -117,14 +117,6 @@ figure iframe {
     transition: 0.1s linear margin-top;
     background-color:#414141;
   }
-
-  #videos.swiped header {
-    margin-top: 28.2vw;
-    padding-right:25px;
-  }
-  #videos.swiped header h1, body.swiped header h2 {
-    display: none;
-  }
 }
 
 header nav ul {
