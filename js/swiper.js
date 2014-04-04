@@ -7,11 +7,10 @@ app.directive('swiper', function($timeout, $rootScope) {
     link: function postLink($scope, element, attrs) {
       $scope.swiper = new Swiper(element[0], {
         updateOnImagesReady: true
-        , centeredSlides: true
-        , slidesPerView: 2
         , keyboardControl: true
         , roundLengths: true
         , calculateHeight: true
+        , speed: 600
       })
       $timeout(function() { $scope.swiper.reInit() }, 0)
 

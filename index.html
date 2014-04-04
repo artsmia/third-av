@@ -4,13 +4,6 @@
 
 <div id="videos">
 
-  <header id="drawer">
-    <nav id="thirdav-controls">
-      <ul>
-        <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
-      </ul>
-    </nav>
-  </header>
 
   <div id="albums" ng-repeat="album in albums" ng-if="activeAlbum == album">
     <section class="swiper-container" swiper>
@@ -24,19 +17,31 @@
           </figcaption>
         </figure>
         <figure class="swiper-slide outro">
-          <a class="back" ng-click="restart()">
-            <img ng-src="{{album.thumbnail_large}}">
-            <span>&larr; Back</span>
+          <a class="restart" ng-click="restart()">
+            <i></i>
           </a>
           <figcaption>
-            <p>We have <ng-pluralize count="album.videos.length" when="{'1': '1 video', 'other': '{} videos'}"></ng-pluralize>
-            in the album <em ng-bind="album.title"></em>.</p>
+            <h3>We have <ng-pluralize count="album.videos.length" when="{'1': '1 video', 'other': '{} videos'}"></ng-pluralize>
+            in the album <em ng-bind="album.title"></em>.</h3>
             <div ng-bind-html="album.description | unsafe"></div>
           </figcaption>
         </figure>
       </div>
+      <a class='video-control back' ng-class="{ active: swiper.activeIndex !== 0 }" ng-click="swiper.swipeTo(swiper.activeIndex - 1)">
+        <i class='video-back-icon'></i>
+      </a>
+      <a class='video-control forward' ng-class="{ active: swiper.activeIndex !== ( swiper.slides.length - 1 ) }" ng-click="swiper.swipeTo(swiper.activeIndex + 1)">
+        <i class='video-forward-icon'></i>
+      </a>
     </section>
   </div>
   
+  <header id="drawer">
+    <nav id="thirdav-controls">
+      <ul>
+        <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
+      </ul>
+    </nav>
+  </header>
 </div>
 <!-- <script src="bundle.js"></script> -->

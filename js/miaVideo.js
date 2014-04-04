@@ -1,6 +1,6 @@
 app.directive('miaVideo', function($sce, $window) {
   return {
-    template: '<iframe ng-src="{{embedUrl}}" height="{{height}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+    template: '<iframe ng-src="{{embedUrl}}" height="{{height}}" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder="0"></iframe>',
     restrict: 'EA',
     replace: true,
     scope: { videoId: '@' },

@@ -2825,7 +2825,7 @@ if (typeof define === 'function' && define.amd) {
 },{}],3:[function(require,module,exports){
 app.directive('miaVideo', function($sce, $window) {
   return {
-    template: '<iframe ng-src="{{embedUrl}}" height="{{height}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>',
+    template: '<iframe ng-src="{{embedUrl}}" height="{{height}}" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder="0"></iframe>',
     restrict: 'EA',
     replace: true,
     scope: { videoId: '@' },
@@ -2873,8 +2873,6 @@ app.directive('swiper', function($timeout, $rootScope) {
     link: function postLink($scope, element, attrs) {
       $scope.swiper = new Swiper(element[0], {
         updateOnImagesReady: true
-        , centeredSlides: true
-        , slidesPerView: 2
         , keyboardControl: true
         , roundLengths: true
         , calculateHeight: true
