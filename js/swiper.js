@@ -21,7 +21,6 @@ app.directive('swiper', function($timeout, $rootScope) {
         scope.$apply()
       }
       var repositionOnApp = function() {
-        // le jankety
         jQuery('html, body').animate({
           scrollTop: jQuery('#videos').offset().top
         }, 500);

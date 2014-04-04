@@ -2889,11 +2889,10 @@ app.directive('swiper', function($timeout, $rootScope) {
       var repositionOnApp = function() {
         jQuery('html, body').animate({
           scrollTop: jQuery('#videos').offset().top
-        }, 250);
+        }, 500);
       }
       $scope.swiper.addCallback('Init', replaceWithVimeo)
       $scope.swiper.addCallback('SlideChangeEnd', replaceWithVimeo)
-      $scope.swiper.addCallback('Init', repositionOnApp)
       $scope.swiper.addCallback('SlideChangeStart', repositionOnApp)
 
       $scope.restart = function() {
