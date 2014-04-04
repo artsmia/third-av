@@ -146,17 +146,6 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-overflow-scrolling:touch;
   -ms-overflow-style:-ms-autohiding-scrollbar;
 }
-.caption-content:after{
-  content:'';
-  position:absolute;
-  bottom:0;
-  left:20px;
-  right:20px;
-  height:30px;
-  background-color:#363636;
-  box-shadow:0 -10px 20px #363636;
-  -webkit-transition: all 300ms linear;
-}
 #videos figure.swiper-slide-active .caption-content:after{
   background-color:#414141;
   box-shadow:0 -10px 20px #414141;
