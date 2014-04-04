@@ -93,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 #videos .swiper-container{
   width:90%;
-  max-height:550px;
   overflow:visible;
   position:static;
   -webkit-user-select: none;    
@@ -106,7 +105,6 @@ h1, h2, h3, h4, h5, h6 {
   position:relative;
   width:100%;
   height:100%;
-  max-height:550px;
   background-color:#363636;
   opacity:1;
   margin:0;
@@ -159,7 +157,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top:3px;
 }
 .caption-content{
-  max-height:100%;
   padding:10px 30px 30px;
   font-size:1em;
   line-height:1.3em;
@@ -246,7 +243,7 @@ h1, h2, h3, h4, h5, h6 {
 .video-control.active i{
   position:absolute;
   display:block;
-  top:50%;
+  top:50px;
   margin:-20px 0 0;
   font-family:"artsmia-icons";
   font-size:50px;
@@ -272,14 +269,6 @@ h1, h2, h3, h4, h5, h6 {
 .video-control.active.forward i:before{
   content:'\e80A';
 }
-@media screen and (min-width: 641px) {
-  #videos figure {
-    max-height:650px;
-  }
-  #videos .swiper-container{
-    max-height:650px;
-  }
-}
 
 @media screen and (min-width: 768px) {
   #drawer {
@@ -290,7 +279,6 @@ h1, h2, h3, h4, h5, h6 {
   }
   #videos figure {
     opacity:0.1;
-    max-height:700px;
   }
   #videos figure figcaption {
     font-size:1.1em;
@@ -299,7 +287,6 @@ h1, h2, h3, h4, h5, h6 {
   #videos .swiper-container{
     width:80%;
     max-width:650px;
-    max-height:700px;
   }
 }
 
@@ -316,11 +303,5 @@ h1, h2, h3, h4, h5, h6 {
   }
   .video-control{
     display:block;
-  }
-  #videos figure {
-    max-height:800px;
-  }
-  #videos .swiper-container{
-    max-height:800px;
   }
 }
