@@ -32,7 +32,13 @@ class ThirdAV {
 			true
 		);
 
-		wp_enqueue_script('fastclick');
+		wp_enqueue_script(
+			'fastclick',
+			plugins_url( 'js/fastclick.js', __FILE__ ),
+			array(),
+			null,
+			true
+		);
 
 	}
 
