@@ -28,6 +28,10 @@ require('./js/miaVideo')
 require('./js/swiper')
 require('./js/ngUnsafe')
 
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+
 // Bootstrap after page load
 document.body.setAttribute( 'ng-controller', 'mainCtrl' );
 document.getElementById('thirdav-menu').innerHTML = controls;

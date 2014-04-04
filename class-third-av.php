@@ -32,6 +32,8 @@ class ThirdAV {
 			true
 		);
 
+		wp_enqueue_script('fastclick');
+
 	}
 
 }
