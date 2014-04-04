@@ -2876,6 +2876,7 @@ app.directive('swiper', function($timeout, $rootScope) {
         , keyboardControl: true
         , roundLengths: true
         , speed: 600
+        , calculateHeight: true
       })
       $timeout(function() { $scope.swiper.reInit() }, 0)
 

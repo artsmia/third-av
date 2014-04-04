@@ -71,10 +71,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #albums{
   position:relative;
-  height:100vh;
 }
 #videos .swiper-container{
   width:90%;
+  max-height:550px;
   overflow:visible;
   position:static;
   -webkit-user-select: none;    
@@ -85,9 +85,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 #videos figure {
   position:relative;
-  display:inline-block;
   width:100%;
-  height:100vh;
+  height:100%;
+  max-height:550px;
   background-color:#363636;
   opacity:1;
   margin:0;
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity:1;
 }
 #videos figure img{
-  position:relative;
+  position:absolute;
   top:0;
   left:0;
   display:block;
@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 #videos figcaption{
-  position:absolute;
+  position:relative;
   top:0;
   left:0;
   width:100%;
@@ -169,7 +169,9 @@ h1, h2, h3, h4, h5, h6 {
  * -------------------------------------------------------------------------- */
 
 #videos .outro .restart{
-  position:relative;
+  position:absolute;
+  top:0;
+  left:0;
   display:block;
   width:100%;
   height:0;
@@ -253,11 +255,16 @@ h1, h2, h3, h4, h5, h6 {
 .video-control.active.forward i:before{
   content:'\e80A';
 }
+@media screen and (min-width: 641px) {
+  #videos figure {
+    max-height:650px;
+  }
+  #videos .swiper-container{
+    max-height:650px;
+  }
+}
 
 @media screen and (min-width: 768px) {
-  #videos .outro .restart{
-    max-height:50vh;
-  }
   #drawer {
     display:block;
   }
@@ -266,14 +273,16 @@ h1, h2, h3, h4, h5, h6 {
   }
   #videos figure {
     opacity:0.1;
+    max-height:700px;
   }
   #videos figure figcaption {
     font-size:1.1em;
     line-height:1.4em;
   }
   #videos .swiper-container{
-    width:88.88vh;
-    max-width:800px;
+    width:80%;
+    max-width:650px;
+    max-height:700px;
   }
 }
 
@@ -290,5 +299,11 @@ h1, h2, h3, h4, h5, h6 {
   }
   .video-control{
     display:block;
+  }
+  #videos figure {
+    max-height:800px;
+  }
+  #videos .swiper-container{
+    max-height:800px;
   }
 }
