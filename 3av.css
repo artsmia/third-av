@@ -30,7 +30,6 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   display:none;
   width: 200px;
-  overflow: scroll;
   top: 0;
   left: 0;
   height: 100%;
@@ -161,9 +160,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size:1em;
   line-height:1.3em;
   font-weight:300;
-  overflow:scroll;
-  -webkit-overflow-scrolling:touch;
-  -ms-overflow-style:-ms-autohiding-scrollbar;
 }
 #videos figure.swiper-slide-active .caption-content:after{
   background-color:#414141;
