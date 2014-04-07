@@ -161,6 +161,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height:1.3em;
   font-weight:300;
 }
+.caption-content h3 {
+  line-height:1.2em;
+  margin-bottom:0;
+}
+.caption-content div {
+  margin-top:1em;
+}
 #videos figure.swiper-slide-active .caption-content:after{
   background-color:#414141;
   box-shadow:0 -10px 20px #414141;
