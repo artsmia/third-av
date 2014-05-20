@@ -16,7 +16,7 @@ app.controller('mainCtrl', ['$scope', '$sce',
   function($scope, $sce) {
     $scope.videos = $scope.recent = vimeoJson.videos
     $scope.albums = vimeoJson.albums
-    $scope.albums.splice(1, 0, {title: "Recent", videos: $scope.recent})
+    $scope.albums.splice(1, 0, {title: "Latest", videos: $scope.recent})
 
     $scope.activateAlbum = function(album) { $scope.activeAlbum = album }
     $scope.activeAlbum = $scope.albums[0]
