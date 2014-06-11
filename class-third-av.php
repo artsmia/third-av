@@ -7,11 +7,7 @@
  */
 class ThirdAV {
 	
-	static function print_template(){ 
-		readfile( plugins_url( 'index.html', __FILE__ ) );
-	}
-
-	static function enqueue_scripts_and_styles(){
+	public function enqueue_scripts_and_styles(){
 
 		wp_enqueue_style( 
 			'thirdav_css',
@@ -40,6 +36,18 @@ class ThirdAV {
 			true
 		);
 
+	}
+
+	public function add_mobile_menu() {
+		echo "<h2 class='header'>ThirdAV</h2><div class='menu' id='thirdav-menu'></div>";
+	}
+
+	public function print_template(){ 
+		readfile( plugins_url( 'index.html', __FILE__ ) );
+	}
+
+	public function __construct() {
+		add_action( 'mia_mobile_menus', array( $this, 'add_mobile_menu' ) );
 	}
 
 }
