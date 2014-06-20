@@ -24,7 +24,7 @@ class ThirdAV {
 			'thirdav_js',
 			plugins_url( 'bundle.js', __FILE__ ),
 			array(),
-			null,
+			'20140620',
 			true
 		);
 
