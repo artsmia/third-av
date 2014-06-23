@@ -2915,7 +2915,9 @@ app.directive('swiper', function($timeout, $rootScope) {
       // Replace video thumbnails with <iframe> video players on slide change
       var replaceWithVimeo = function(swiper, direction) {
         var scope = angular.element(swiper.activeSlide()).scope()
-        if(scope.video) scope.video.active = true
+        if(scope.hasOwnProperty( 'video' ) && scope.video){
+            scope.video.active = true;
+        } scope.video.active = true
         if(scope.$$nextSibling && scope.$$nextSibling.video) scope.$$nextSibling.video.active = true
         scope.$apply()
       }

@@ -15,7 +15,8 @@
               <div ng-bind-html="video.description | unsafe"></div>
             </div>
           </figcaption>
-          <div class='aspect' ng-style="{'background':'url({{video.thumbnail_large}}) no-repeat center center', 'background-size':'cover', '-webkit-background-size':'cover', '-moz-background-size':'cover'}"></div>
+          <div class='aspect' ng-style="{'background':'url({{video.thumbnail_large}}) no-repeat center center', 'background-size':'cover', '-webkit-background-size':'cover', '-moz-background-size':'cover'}" ng-hide="video.loaded">
+          </div>
           <mia-video ng-if="video.active" video-id="{{video.id}}"></mia-video>
         </figure>
         <figure class="swiper-slide outro">
