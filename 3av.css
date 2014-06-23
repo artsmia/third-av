@@ -145,6 +145,10 @@ h1, h2, h3, h4, h5, h6 {
   content:"Loading Video ...";
 }
 
+.aspect:last-child:after{
+  display:none;
+}
+
 /* fancy colors: purple red blue magenta green orange */
 #videos .swiper-slide-active:nth-child(6n+1) .aspect { border-color: purple !important; }
 #videos .swiper-slide-active:nth-child(6n+2) .aspect { border-color: red !important; }
