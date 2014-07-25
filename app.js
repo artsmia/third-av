@@ -2,6 +2,7 @@ var ng = require('angular')
 var fs = require('fs')
 var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
 var controls = document.getElementById('thirdav-controls').innerHTML;
+var sluggo = require('sluggo')
 
 window.app = ng.module('third-av', [])
 
@@ -20,7 +21,7 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location',
 
     $scope.activateAlbum = function( album ) {
       $scope.activeAlbum = album;
-      $location.path( album.title );
+      $location.path( sluggo(album.title) );
     }
 
     $scope.activeAlbum = $scope.albums[0]
@@ -28,7 +29,7 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location',
     $scope.$on( '$locationChangeSuccess', function(){
       var path = $location.path().substring(1); // Get rid of starting slash
       for( var i = 0; i < $scope.albums.length; i++ ) {
-        if( path.toLowerCase() === $scope.albums[i].title.toLowerCase() ){
+        if( path === sluggo($scope.albums[i].title) ){
           $scope.activateAlbum( $scope.albums[i] );
         }
       }

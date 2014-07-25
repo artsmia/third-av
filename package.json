@@ -13,6 +13,7 @@
   "dependencies": {
     "browserify": "~3.32.1",
     "debowerify": "~0.7.0",
-    "brfs": "^1.2.0"
+    "brfs": "^1.2.0",
+    "sluggo": "^0.2.0"
   }
 }
