@@ -1,7 +1,7 @@
 var ng = require('angular')
-  , fs = require('fs')
-  , vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
-  , controls = document.getElementById('thirdav-controls').innerHTML;
+var fs = require('fs')
+var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
+var controls = document.getElementById('thirdav-controls').innerHTML;
 
 window.app = ng.module('third-av', [])
 
@@ -12,13 +12,13 @@ app.config(function($sceDelegateProvider) {
   ])
 })
 
-app.controller('mainCtrl', ['$scope', '$sce', '$location', 
+app.controller('mainCtrl', ['$scope', '$sce', '$location',
   function($scope, $sce, $location) {
     $scope.videos = $scope.recent = vimeoJson.videos
     $scope.albums = vimeoJson.albums
     $scope.albums.splice(1, 0, {title: "Latest", videos: $scope.recent})
 
-    $scope.activateAlbum = function( album ) { 
+    $scope.activateAlbum = function( album ) {
       $scope.activeAlbum = album;
       $location.path( album.title );
     }
