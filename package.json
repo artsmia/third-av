@@ -12,7 +12,7 @@
   "gitHead": "81a0b99cffc445710f7761d9943fa6363d77162a",
   "dependencies": {
     "browserify": "~3.32.1",
-    "angular": "~1.2.10",
-    "debowerify": "~0.7.0"
+    "debowerify": "~0.7.0",
+    "brfs": "^1.2.0"
   }
 }
