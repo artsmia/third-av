@@ -41,15 +41,15 @@ require('./js/miaVideo')
 require('./js/swiper')
 require('./js/ngUnsafe')
 
-if(typeof jQuery !== 'undefined') {
-  // We're in the wordpress theme
-  // Bootstrap after page load
-  document.body.setAttribute( 'ng-controller', 'mainCtrl' );
-  document.getElementById('thirdav-menu').innerHTML = controls;
-  ng.bootstrap( document.body, ['third-av'] );
+// Bootstrap after page load
+document.body.setAttribute( 'ng-controller', 'mainCtrl' );
+ng.bootstrap( document.body, ['third-av'] );
 
-  // because this is enqueued by wordpress, we can't have it in standalone
-  window.addEventListener('load', function() {
-    FastClick.attach(document.body);
-  }, false);
+// because this is enqueued by wordpress, we can't have it in standalone
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+if(typeof jQuery !== 'undefined') {
+  // Don't build the menu if we aren't in the wordpress theme
+  document.getElementById('thirdav-menu').innerHTML = controls;
 }
