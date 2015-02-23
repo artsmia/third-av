@@ -21,7 +21,7 @@ merge:
 	node js/vimeoJson.js > all.json
 
 browserify:
-	browserify app.js -t debowerify -t brfs -o bundle.js
+	browserify --full-path=false app.js -t debowerify -t brfs -o bundle.js
 
 watchify:
 	watchify app.js -t debowerify -t brfs -o bundle.js

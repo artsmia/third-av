@@ -1,7 +1,7 @@
-var ng = require('angular')
+var ng = require('angular') // 752kb
 var fs = require('fs')
-var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
-var sluggo = require('sluggo')
+var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8')) // 232kb
+var sluggo = require('sluggo') // 8kb
 
 window.app = ng.module('third-av', [])
 
@@ -41,7 +41,7 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
 ])
 
 require('./js/miaVideo')
-require('./js/swiper')
+require('./js/swiper') // 112kb
 require('./js/ngUnsafe')
 
 // Bootstrap after page load
