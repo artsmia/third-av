@@ -46,7 +46,7 @@
   <header id="drawer">
     <nav id="thirdav-controls">
       <ul>
-        <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-bind="album.title" ng-click="activateAlbum(album)"></a></li>
+        <li ng-repeat="album in albums" ng-class="{active: album == activeAlbum}"><a ng-href="#/{{album.slug}}" ng-bind="album.title"></a></li>
       </ul>
     </nav>
   </header>

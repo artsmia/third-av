@@ -1,7 +1,6 @@
 var ng = require('angular')
 var fs = require('fs')
 var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8'))
-var controls = document.getElementById('thirdav-controls').innerHTML;
 var sluggo = require('sluggo')
 
 window.app = ng.module('third-av', [])
@@ -13,15 +12,18 @@ app.config(function($sceDelegateProvider) {
   ])
 })
 
-app.controller('mainCtrl', ['$scope', '$sce', '$location',
-  function($scope, $sce, $location) {
+app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
+  function($scope, $sce, $location, $timeout) {
     $scope.videos = $scope.recent = vimeoJson.videos
     $scope.albums = vimeoJson.albums
+    angular.forEach($scope.albums, function(album) {
+      album.slug = sluggo(album.title)
+    })
     $scope.albums.splice(1, 0, {title: "Latest", videos: $scope.recent})
 
     $scope.activateAlbum = function( album ) {
       $scope.activeAlbum = album;
-      $location.path( sluggo(album.title) );
+      $location.path(album.slug);
     }
 
     $scope.activeAlbum = $scope.albums[0]
@@ -29,8 +31,9 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location',
     $scope.$on( '$locationChangeSuccess', function(){
       var path = $location.path().substring(1); // Get rid of starting slash
       for( var i = 0; i < $scope.albums.length; i++ ) {
-        if( path === sluggo($scope.albums[i].title) ){
+        if(path === $scope.albums[i].slug) {
           $scope.activateAlbum( $scope.albums[i] );
+          $timeout(copyThirdAvControlsToWPMenu, 100)
         }
       }
     });
@@ -49,7 +52,11 @@ ng.bootstrap( document.body, ['third-av'] );
 window.addEventListener('load', function() {
   FastClick.attach(document.body);
 }, false);
-if(typeof jQuery !== 'undefined') {
-  // Don't build the menu if we aren't in the wordpress theme
-  document.getElementById('thirdav-menu').innerHTML = controls;
+function copyThirdAvControlsToWPMenu() {
+  var controls = document.getElementById('thirdav-controls').innerHTML;
+  if(typeof jQuery !== 'undefined') {
+    // Don't build the menu if we aren't in the wordpress theme
+    document.getElementById('thirdav-menu').innerHTML = controls;
+  }
 }
+copyThirdAvControlsToWPMenu()
