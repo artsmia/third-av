@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 default: vimeo merge browserify
 
 .PHONY: youtube
@@ -7,11 +8,13 @@ youtube:
 
 .PHONY: vimeo
 vimeo:
-	curl http://vimeo.com/api/v2/artsmia/videos.json | jq --sort-keys '.' > vimeo/videos.json
+	cat <(curl http://vimeo.com/api/v2/artsmia/videos.json | jq --sort-keys '.[]') \
+	    <(jq '.[]' vimeo/videos.json) \
+	| jq -s 'unique_by(.id) | sort_by(.id)' | grep -v '"stats' | sponge vimeo/videos.json
 	curl http://vimeo.com/api/v2/artsmia/albums.json | jq --sort-keys '.' > vimeo/albums.json
 	mkdir -p vimeo/albums
 	for album in $$(jq -r 'map(.id) | .[]' < vimeo/albums.json); do \
-		curl http://vimeo.com/api/v2/album/$$album/videos.json | jq --sort-keys '.' > vimeo/albums/$$album.json; \
+		curl http://vimeo.com/api/v2/album/$$album/videos.json | jq --sort-keys '.' | grep -v '"stats' > vimeo/albums/$$album.json; \
 	done
 
 merge:
