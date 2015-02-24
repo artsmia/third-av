@@ -1,19 +1,31 @@
 {
-  "name": "mia-videos",
-  "version": "0.0.0",
+  "name": "third-av",
+  "version": "0.0.1",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "watchify index.js -o bundle.js & serve -p 1315",
+    "build": "NODE_ENV=production browserify index.js | uglifyjs -c -m > bundle.js"
   },
   "repository": "",
   "author": "",
-  "license": "BSD",
-  "gitHead": "81a0b99cffc445710f7761d9943fa6363d77162a",
-  "dependencies": {
-    "browserify": "~3.32.1",
-    "debowerify": "~0.7.0",
-    "brfs": "^1.2.0",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      "babelify", "brfs"
+    ]
+  },
+  "devDependencies": {
+    "babelify": "^5.0.3",
+    "browserify": "^8.1.0",
+    "uglify-js": "^2.3.6",
+    "watchify": "^2.2.1",
     "sluggo": "^0.2.0"
+  },
+  "dependencies": {
+    "when": "^3.6.4",
+    "react-router": "^0.11.6",
+    "react": "^0.12.2"
   }
 }
