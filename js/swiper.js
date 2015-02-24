@@ -5,7 +5,7 @@ app.directive('swiper', function($timeout, $rootScope) {
   return {
     restrict: 'A',
     link: function postLink($scope, element, attrs) {
-      $scope.swiper = new Swiper(element[0], {
+      $scope.swiper = $scope.$parent.$parent.swiper = new Swiper(element[0], {
         updateOnImagesReady: true
         , keyboardControl: true
         , roundLengths: true

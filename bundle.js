@@ -18,9 +18,24 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
     $scope.albums.splice(1, 0, {title: "Latest", slug: "latest", videos: $scope.recent})
     moveLecturesDown()
 
-    $scope.activateAlbum = function( album ) {
+    $scope.activateAlbum = function(album, dontChangeLocation) {
       $scope.activeAlbum = album;
-      $location.path(album.slug);
+      if(!dontChangeLocation) $location.path(album.slug);
+    }
+
+    // this is a bit clunky. But it should work.
+    // (The one problem to look out for is clashing album and video titles)
+    $scope.activateVideo = function(video) {
+      var latest = $scope.albums[1]
+      $scope.activateAlbum(latest, true)
+      // wait for the swiper to get initialized before calling `swipeTo` 
+      $scope._cancelWatch = $scope.$watch('swiper', function(swiper) {
+        if(!swiper) return
+        $timeout(function() {
+          $scope.swiper.swipeTo(latest.videos.indexOf(video))
+          $scope._cancelWatch()
+        }, 0)
+      })
     }
 
     $scope.activeAlbum = $scope.albums[0]
@@ -34,6 +49,14 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
           return
         }
       }
+
+      angular.forEach($scope.videos, function(video) {
+        if(path === video.slug) {
+          console.log('activating video', video)
+          $scope.activateVideo(video)
+          return
+        }
+      })
     });
 
     function moveLecturesDown() {
@@ -2919,7 +2942,7 @@ app.directive('swiper', function($timeout, $rootScope) {
   return {
     restrict: 'A',
     link: function postLink($scope, element, attrs) {
-      $scope.swiper = new Swiper(element[0], {
+      $scope.swiper = $scope.$parent.$parent.swiper = new Swiper(element[0], {
         updateOnImagesReady: true
         , keyboardControl: true
         , roundLengths: true
