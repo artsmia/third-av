@@ -1,7 +1,6 @@
 var ng = require('angular') // 752kb
 var fs = require('fs')
 var vimeoJson = JSON.parse(fs.readFileSync('all.json', 'utf8')) // 232kb
-var sluggo = require('sluggo') // 8kb
 
 window.app = ng.module('third-av', [])
 
@@ -14,12 +13,10 @@ app.config(function($sceDelegateProvider) {
 
 app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
   function($scope, $sce, $location, $timeout) {
-    $scope.videos = $scope.recent = vimeoJson.videos
+    $scope.videos = $scope.recent = vimeoJson.videos.reverse()
     $scope.albums = vimeoJson.albums
-    angular.forEach($scope.albums, function(album) {
-      album.slug = sluggo(album.title)
-    })
-    $scope.albums.splice(1, 0, {title: "Latest", videos: $scope.recent})
+    $scope.albums.splice(1, 0, {title: "Latest", slug: "latest", videos: $scope.recent})
+    moveLecturesDown()
 
     $scope.activateAlbum = function( album ) {
       $scope.activeAlbum = album;
@@ -34,9 +31,16 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
         if(path === $scope.albums[i].slug) {
           $scope.activateAlbum( $scope.albums[i] );
           $timeout(copyThirdAvControlsToWPMenu, 100)
+          return
         }
       }
     });
+
+    function moveLecturesDown() {
+      var lectures = $scope.albums.filter(function(album) { return album.title == 'Lectures' })[0]
+      $scope.albums.splice($scope.albums.indexOf(lectures), 1)
+      $scope.albums.splice(7, 0, lectures)
+    }
   }
 ])
 
