@@ -28,6 +28,7 @@ watchify:
 
 deploy:
 	git add *.js* vimeo
+	git reset index.js
 	git commit -m "$$(git diff --cached vimeo/videos.json | grep '+    \"description\"' | wc -l | tr -d ' ') changed" --author="miabot <null+github@artsmia.org>"
 	git push
 	ssh new "cd third-av-symlink; git pull"
