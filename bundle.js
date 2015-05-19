@@ -51,8 +51,8 @@ app.controller('mainCtrl', ['$scope', '$sce', '$location', '$timeout',
       }
 
       angular.forEach($scope.videos, function(video) {
+        if(parseInt(path) === video.id) window.location.replace(window.location.href.replace(video.id, video.slug))
         if(path === video.slug) {
-          console.log('activating video', video)
           $scope.activateVideo(video)
           return
         }
