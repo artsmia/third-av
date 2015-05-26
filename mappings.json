@@ -1,0 +1,46 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "analysis": {
+      "filter": {
+        "ngram_filter": {
+          "type": "edge_ngram",
+          "min_gram": 4,
+          "max_gram": 20
+        }
+      },
+      "analyzer": {
+        "rawFolding": {
+          "tokenizer": "keyword",
+          "filter":  [ "lowercase", "asciifolding" ]
+        },
+        "folding": {
+          "tokenizer": "standard",
+          "filter":  [ "lowercase", "asciifolding" ]
+        },
+        "ngram": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "ngram_filter"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "video": {
+      "properties": {
+				"description": {"type": "string"},
+				"duration": {"type": "integer"},
+				"tags": {"type": "string"},
+				"title": {"type": "string"},
+				"upload_date": {
+					"type": "date",
+					"format": "YYYY-MM-dd HH:mm:ss"
+				}
+      }
+    }
+  }
+}

@@ -30,9 +30,24 @@ browserify:
 watchify:
 	watchify app.js -t debowerify -t brfs -o bundle.js
 
-deploy:
+deploy: es
 	git add *.js* vimeo
 	git reset index.js
 	git commit -m "$$(git diff --cached vimeo/videos.json | grep '+    \"description\"' | wc -l | tr -d ' ') changed" --author="miabot <null+github@artsmia.org>"
 	git push
 	ssh new "cd third-av-symlink; git pull"
+
+index = $(ES_index)
+
+es: deleteIndex createIndex
+	for vid in vimeo/videos/*.json; do \
+		id=$$(basename $$vid .json); \
+		echo "{\"index\" : {\"_type\" : \"video\", \"_id\" : \"$$id\"}}"; \
+		jq -r -c '.' $$vid; \
+	done | curl -XPUT "$(ES_URL)/video/_bulk" --data-binary @-; \
+
+deleteIndex:
+	curl -XDELETE $(ES_URL)/$(index)
+
+createIndex:
+	curl -XPOST -d @mappings.json $(ES_URL)/$(index)
