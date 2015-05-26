@@ -16,6 +16,10 @@ vimeo:
 	for album in $$(jq -r 'map(.id) | .[]' < vimeo/albums.json); do \
 		curl http://vimeo.com/api/v2/album/$$album/videos.json | jq --sort-keys '.' | grep -v '"stats' > vimeo/albums/$$album.json; \
 	done
+	jq '.[].id' vimeo/videos.json | while read id; do \
+		jq --arg id $$id '.[] | select(.id == ($$id | tonumber))' vimeo/videos.json \
+		> vimeo/videos/$$id.json; \
+	done
 
 merge:
 	node js/vimeoJson.js > all.json
